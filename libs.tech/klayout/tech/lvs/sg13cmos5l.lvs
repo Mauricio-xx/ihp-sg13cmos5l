@@ -341,6 +341,10 @@ else
   #==================================
 
   # %include rule_decks/cap_derivations.lvs
+  # cap_cmomi_connections.lvs is pulled in unconditionally by
+  # devices_connections.lvs and needs these derivations. The device itself is
+  # not ported to the CMOS5L stack yet, see issue #64.
+  # %include rule_decks/cap_cmomi_derivations.lvs
 
   #================================
   # ------ ESD DERIVATIONS --------
