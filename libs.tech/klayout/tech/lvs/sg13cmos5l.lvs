@@ -341,9 +341,15 @@ else
   #==================================
 
   # %include rule_decks/cap_derivations.lvs
-  # cap_cmomi_connections.lvs is pulled in unconditionally by
-  # devices_connections.lvs and needs these derivations. The device itself is
-  # not ported to the CMOS5L stack yet, see issue #64.
+  # These are needed because cap_cmomi_connections.lvs is pulled in
+  # unconditionally by devices_connections.lvs, but including them also makes
+  # cap_cmomi a live device here: cap_extraction.lvs extracts it with no guard,
+  # its Recog.mom marker (99/39) is a normal layer, and the M1-M4 combs it wants
+  # all exist on this stack. So a layout carrying Recog.mom will extract a
+  # cap_cmomi, same as in SG13G2.
+  #
+  # What is missing is coverage, not function: CAP is excluded from the device
+  # regression and there is no cap_cmomi testcase. See issue #64.
   # %include rule_decks/cap_cmomi_derivations.lvs
 
   #================================
